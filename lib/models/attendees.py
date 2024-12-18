@@ -42,5 +42,22 @@ class Attendee:
         cursor.execute('SELECT * FROM attendees WHERE event_id = ?', (event_id,))
         rows = cursor.fetchall()
         return [cls(id=row[0], name=row[1], email=row[2], event_id=row[3]) for row in rows]
+    
+    @classmethod
+    def get_all(cls):
+        cursor.execute('SELECT * FROM attendees')
+        rows = cursor.fetchall()
+        return [cls(id=row[0], name=row[1], email=row[2], event_id=row[3]) for row in rows]
+    
+    def update(self):
+        cursor.execute('''
+            UPDATE attendees
+            SET name = ?, email = ?, event_id = ?
+            WHERE id = ?
+        ''', (self.name, self.email, self.event_id, self.id))
+        CONN.commit()
 
-        
+    def delete(self):
+        cursor.execute('DELETE FROM attendees WHERE id = ?', (self.id,))
+        CONN.commit()
+        self.id = None
