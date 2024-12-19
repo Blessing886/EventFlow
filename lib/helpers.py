@@ -160,4 +160,14 @@ def update_an_attendee():
         print(f"An error occurred: {err}")
 
 def delete_an_attendee():
-    pass
+    try:
+        attendee_id = input("Enter the attendee id to delete: ")
+        attendee = Attendee.get_by_id(attendee_id)
+        if not attendee:
+            print(f"No attendee found id {attendee_id}.")
+            return
+        
+        attendee.delete()
+        print(f"Attendee '{attendee.name}' deleted successfully!")
+    except Exception as err:
+        print(f"An error occured: {err}")
