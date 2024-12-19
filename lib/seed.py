@@ -60,12 +60,5 @@ attendee.email = "tina@gmail.com"
 attendee.update()
 print(f"attendee updated: {attendee}")
 
-"""delete"""
-attendee.delete()
-print(f"deleted attendee with id: {attendee.id}")
- 
-print("Attendees deleted")
-attendees_deleted = Attendee.get_all()
-for attend in attendees_deleted:
-    print(attend)
+
 
