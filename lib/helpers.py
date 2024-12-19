@@ -30,7 +30,17 @@ def find_event_by_id():
     print(event) if event else print(f"Event ID '{id_}' not found.")
 
 def create_event():
-    pass
+    try:
+        name = input("Enter the event name: ")
+        date = input("Enter the event date (YYYY-MM-DD): ")
+        location = input("Enter event location: ")
+
+        event = Event(name=name, date=date, location=location)
+        event.save()
+        print(f"Event '{event.name}' successfully created with ID: {event.id}.")
+    except Exception as err:
+        print(f"An error occurred while creating the event: {err}")
+
 
 def update_event():
     pass
