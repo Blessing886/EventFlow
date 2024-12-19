@@ -31,9 +31,20 @@ def find_event_by_id():
 
 def create_event():
     try:
-        name = input("Enter the event name: ")
-        date = input("Enter the event date (YYYY-MM-DD): ")
-        location = input("Enter event location: ")
+        name = input("Enter the event name: ").strip()
+        while not name:
+            print("Event name cannot be empty.")
+            name = input("Enter the event name: ").strip()
+
+        date = input("Enter the event date (YYYY-MM-DD): ").strip()
+        while not date:
+            print("Event date cannot be empty.")
+            date = input("Enter the event date (YYYY-MM-DD): ").strip()
+
+        location = input("Enter event location: ").strip()
+        while not location:
+            print("Event location cannot be empty.")
+            location = input("Enter event location: ").strip()
 
         event = Event(name=name, date=date, location=location)
         event.save()
@@ -43,7 +54,23 @@ def create_event():
 
 
 def update_event():
-    pass
+    id_ = input("Enter the event's id: ")
+    if event := Event.get_by_id(id_):
+        try:
+            name = input("Enter event's new name: ")
+            event.name = name
+            date = input("Enter event's new date: ")
+            event.date = date
+            location = input("Enter event's new location: ")
+            event.location = location
+
+            event.update()
+            print(f"Success: {event}")
+        except Exception as exc:
+            print("Error updating event:", exc)
+    else:
+        print(f"Event {id_} not found")
+
 
 def delete_event():
     id_ = input("Enter event's ID: ")
@@ -55,3 +82,18 @@ def delete_event():
         print(f"Event ID '{id_}' not found.")
 
 # Attendee functions
+
+def create_an_attendee():
+    pass
+
+def view_all_attendees():
+    pass
+
+def find_attendees_of_an_event():
+    pass
+
+def update_an_attendee():
+    pass
+
+def delete_an_attendee():
+    pass

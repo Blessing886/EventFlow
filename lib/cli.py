@@ -5,7 +5,12 @@ from helpers import (
     find_event_by_id,
     create_event,
     update_event,
-    delete_event
+    delete_event,
+    create_an_attendee,
+    view_all_attendees,
+    find_attendees_of_an_event,
+    update_an_attendee,
+    delete_an_attendee,
 )
 
 def main():
@@ -26,6 +31,16 @@ def main():
             update_event()
         elif choice == "6":
             delete_event()
+        elif choice == "7":
+            create_an_attendee()
+        elif choice == "8":
+            view_all_attendees()
+        elif choice == "9":
+            find_attendees_of_an_event()
+        elif choice == "10":
+            update_an_attendee()
+        elif choice == "11":
+            delete_an_attendee()
         else:
             print("Invalid Choice!")
 
@@ -40,6 +55,11 @@ def menu():
     print("4.Create event")
     print("5.Update event")
     print("6.Delete event")
+    print("7.Create an attendee")
+    print("8.View all attendees")
+    print("9.Find attendees of an event")
+    print("10.Update an attendee")
+    print("11.Delete an attendee")
 
 if __name__ == "__main__":
     main()
