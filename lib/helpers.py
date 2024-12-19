@@ -84,16 +84,80 @@ def delete_event():
 # Attendee functions
 
 def create_an_attendee():
-    pass
+    try:
+        name = input("Enter the attendee name: ")
+        while not name:
+            print("Attendee name cannot be empty.")
+            name = input("Enter the attendee name: ")
+
+        email = input("Enter the attendee's email: ")
+        while not email:
+            print("Attendee email cannot be empty.")
+            email = input("Enter the attendee email: ")
+
+        event_id = input("Enter event's id: ")
+        while not event_id:
+            print("Event id cannot be empty.")
+            event_id = input("Enter the event id: ")
+
+        event = Event.get_by_id(event_id)
+        if not event:
+            print(f"No event found with id {event_id}. Attendee creation cancelled.")
+            return
+        
+        attendee = Attendee(name=name, email=email, event_id=event_id)
+        attendee.save()
+        print(f"Attendee '{attendee.name}' created successfully for event '{event.name}'!")
+
+    except Exception as err:
+        print(f"An error occured: {err}")
 
 def view_all_attendees():
-    pass
+    attendees = Attendee.get_all()
+    for attendee in attendees:
+        print(attendee)
 
 def find_attendees_of_an_event():
-    pass
+    try:
+        event_id = input("Enter the event ID: ")
+        if not event_id:
+            print("Event ID cannot be empty.")
+            return
+        event = Event.get_by_id(event_id)
+        if not event:
+            print(f"No event found with ID {event_id}.")
+            return
+        
+        attendees = Attendee.get_by_event_id(event_id)
+        if not attendees:
+            print(f"No attendees found event '{event.name}'.")
+            return
+    
+        print(f"Attendees for event '{event.name}': ")
+        for attendee in attendees:
+            print(attendee)
+    except Exception as err:
+        print(f"An error occurred: {err}")
 
 def update_an_attendee():
-    pass
+    try:
+        attendee_id = input("Enter attendee id to update: ")
+        attendee = Attendee.get_by_id(attendee_id)
+        if not attendee:
+            print(f"No attendee found with id {attendee_id}.")
+            return
+        name = input(f"Enter new name (leave blank to keep '{attendee.name}'): ")
+        email = input(f"Enter new email (leave blank to keep '{attendee.email}'): ")
+
+        if name:
+            attendee.name = name
+        if email:
+            attendee.email = email
+
+        attendee.update()
+        print(f"Attendee '{attendee.id}' updated successfully!")
+    except Exception as err:
+        print(f"An error occurred: {err}")
 
 def delete_an_attendee():
     pass
