@@ -48,7 +48,7 @@ class Event:
         rows = cursor.fetchall()
         return [cls(id=row[0], name=row[1], date=row[2], location=row[3]) for row in rows]
     
-    @classmethod
+    
     def update(self):
         cursor.execute('''
             UPDATE events
@@ -58,8 +58,12 @@ class Event:
         CONN.commit()
 
     def delete(self):
-        cursor.execute('DELETE FROM events WHERE id = ?', (self.id))
+        cursor.execute('DELETE FROM events WHERE id = ?', (self.id,))
         CONN.commit()
         self.id = None
 
+    @classmethod
+    def delete_all(cls):
+        cursor.execute('DELETE FROM events')
+        CONN.commit()
         

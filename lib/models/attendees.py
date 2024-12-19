@@ -8,8 +8,7 @@ class Attendee:
         self.event_id = event_id
 
     def __repr__(self):
-        return f"Attendee(id={self.id}, name='{self.name}', email='{self.email}',
-        event_id={self.event_id})"
+        return f"Attendee(id={self.id}, name='{self.name}', email='{self.email}', event_id={self.event_id})"
 
     @classmethod
     def create_table(cls):
