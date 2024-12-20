@@ -1,239 +1,126 @@
-# Phase 3 CLI Project Template
+# EVENTFLOW
 
-## Learning Goals
+#### By
+-- Blessing Okora
 
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+## Overview
 
-***
+The **EventFlow** is an event management command-line application designed to hep users manage
+events and attendees. Users can create, view, update and delete events and attendees in a
+SQLite database. The system also allows retrival of attendees for specific events and
+searching for events by date.
 
-## Introduction
+## Features
+### Event Management
+- Create new event.
+- View all events.
+- Search event by ID.
+- Search event by date.
+- Update an event's details.
+- Delete an event.
 
-You now have a basic idea of what constitutes a CLI, but you (understandably!)
-likely don't have the best idea of where to start. Fork and clone this lesson
-for a template for your CLI. Take a look at the directory structure before we
-begin:
+### Attendee Management
+- Create a new attendee.
+- View all attendees.
+- Find attendees of a specific event.
+- Update an attendees details.
+- Delete an attendee.
 
-```console
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-└── lib
-    ├── cli.py
-    ├── db
-    │   ├── models.py
-    │   └── seed.py
-    ├── debug.py
-    └── helpers.py
-```
+## Project Structure
 
-> **Note: You may already know some or all of the material covered in this
-> lesson. We hope that having it all in one place will help you in designing
-> and developing your project, regardless of where you're starting off.**
+|---lib
+        |--__pycache__
+        |--models
+                |--__init__.py
+                |--atttendees.py
+                |--events.py
+                |--eventflow.db
+        |--cli.py
+        |--debug.py
+        |--helpers.py
+        |run_db.py  
+|---LICENCE
+|---pipfile
+|---pipfile.lock
+|---README.md  
 
-***
+## Technologies Used
+-**Python**
+-**SQL**
 
-## Where Do I Start?
+## Getting Started
 
-This project will likely be one of the biggest projects you've undertaken so
-far. Your first task should be creating a Git repository to keep track of your
-work and roll back any undesired changes.
+### Prerequisites
+- Python 3.8 or higher
+- SQLite
 
-### Removing Existing Git Configuration
+### Installation
+1. Clone the repository:https://github.com/Blessing886/EventFlow.git
+2. Navigate into the "EventFlow" directory
+3. Run `lib/run_db.py` to trigger dabase connection and create eventflow.db
 
-If you're using this template, start off by removing the existing metadata for
-Github and Canvas. Run the following command to carry this out:
+## Usage
 
-```console
-$ rm -rf .git .github .canvas
-```
+### Running the CLI
+- Run `python lib/cli.py` to run the application from the terminal.
+### Menu Options
+0. Exit the program.
+1. View all events.
+2. Find event by date.
+3. Find event by ID.
+4. Create event.
+5. Update event.
+6. Delete event.
+7. Create an attendee.
+8. View all attendees.
+9. Find attendees of an event.
+10. Update an attendee.
+11. Delete an attendee.
 
-The `rm` command removes files from your computer's memory. The `-r` flag tells
-the console to remove _recursively_, which allows the command to remove
-directories and the files within them. `-f` removes them permanently.
+#### Examples
+##### Create an event
+- Select option 4 from the menu.
+- Enter the enter the event name, press enter, enter the event date, press enter then
+finally the event location.
+- The event will be saved in the database.
 
-`.git` contains this directory's configuration to track changes and push to
-Github (you want to track and push _your own_ changes instead), and `.github`
-and `.canvas` contain the metadata to create a Canvas page from your Git repo.
-You don't have the permissions to edit our Canvas course, so it's not worth
-keeping them around.
+##### Find attendees of an event
+- Select option 9 from the menu.
+- Enter the event ID.
+- A list from that event will be displayed.
 
-### Creating Your Own Git Repo
+** To exit the program enter 0**
 
-First things first- rename this directory! Once you have an idea for a name,
-move one level up with `cd ..` and run `mv python-p3-cli-project-template
-<new-directory-name>` to change its name.
+## Testing
+- Run `python lib/debug.py` to test the application. A series of print texts will be
+generated in the terminal showing the process of CRUD operations.
 
-> **Note: `mv` actually stands for "move", but your computer interprets this
-> rename as a move from a directory with the old name to a directory with
-> a new name.**
+## Future Enhancements
+- Add other operations such as search by event name and search by attendee name.
+- Add automated tests for CRUD operations.
 
-`cd` back into your new directory and run `git init` to create a local git
-repository. Add all of your local files to version control with `git add --all`,
-then commit them with `git commit -m'initial commit'`. (You can change the
-message here- this one is just a common choice.)
+## Support and Contact Details
+- Email: <moraablessing082@gmail.com>
 
-Navigate to [GitHub](https://github.com). In the upper-right corner of the page,
-click on the "+" dropdown menu, then select "New repository". Enter the name of
-your local repo, choose whether you would like it to be public or private, make
-sure "Initialize this repository with a README" is unchecked (you already have
-one), then click "Create repository".
+## LICENCE
+MIT License
 
-Head back to the command line and enter `git remote add <project name> <github
-url>`. This will map the remote repository to your local repository. Finally,
-push your first commit with `git push -u origin main`.
+Copyright (c) 2024 Blessing Okora
 
-Your project is now version-controlled locally and online. This will allow you
-to create different versions of your project and pick up your work on a
-different machine if the need arises.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-***
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Generating Your Pipenv
-
-You might have noticed in the file structure- there's already a Pipfile! That
-being said, we haven't put much in there- just Python version 3.8 and ipdb.
-
-Install any dependencies you know you'll need for your project, like SQLAlchemy
-and Alembic, before you begin. You can do this straight from the command line:
-
-```console
-$ pipenv install sqlalchemy alembic
-```
-
-From here, you should run your second commit:
-
-```console
-$ git add Pipfile Pipfile.lock
-$ git commit -m'add sqlalchemy and alembic to pipenv'
-$ git push
-```
-
-Now that your environment is set up, run `pipenv shell` to enter it.
-
-***
-
-## Generating Your Database
-
-Once you're in your environment, you can start development wherever you'd like.
-We think it's easiest to start with setting up your database.
-
-`cd` into the `lib/db` directory, then run `alembic init migrations` to set up
-Alembic. Modify line 58 in `alembic.ini` to point to the database you intend to
-create, then replace line 21 in `migrations/env.py` with the following:
-
-```py
-from models import Base
-target_metadata = Base.metadata
-```
-
-We haven't created our `Base` or any models just yet, but we know where they're
-going to be. Navigate to `models.py` and start creating those models. Remember
-to regularly run `alembic revision --autogenerate -m'<descriptive message>'` and
-`alembic upgrade head` to track your modifications to the database and create
-checkpoints in case you ever need to roll those modifications back.
-
-If you want to seed your database, now would be a great time to write out your
-`seed.py` script and run it to generate some test data. You may want to use
-Pipenv to install Faker to save you some time.
-
-***
-
-## Generating Your CLI
-
-A CLI is, simply put, an interactive script. You can run it with `python cli.py`
-or include the shebang and make it executable with `chmod +x`. It will ask for
-input, do some work, and accomplish some sort of task by the end.
-
-Past that, CLIs can be whatever you'd like. An inventory navigator? A checkout
-station for a restaurant? A choose-your-adventure video game? Absolutely!
-
-Here's what all of these things have in common (if done well): a number of
-`import` statements (usually _a lot_ of import statements), an `if __name__ ==
-"__main__"` block, and a number of function calls inside of that block. These
-functions should be kept in other modules (ideally not _just_ `helpers.py`)
-
-There will likely be some `print()` statements in your CLI script to let the
-user know what's going on, but most of these can be placed in functions in
-other modules that are grouped with others that carry out similar tasks. You'll
-see some variable definitions, object initializations, and control flow
-operators (especially `if/else` blocks and `while` loops) as well. When your
-project is done, your `cli.py` file might look like this:
-
-```py
-from helpers import (
-    function_1, function_2,
-    function_3, function_4,
-    function_5, function_6,
-    function_7, function_8,
-    function_9, function_10
-)
-
-if __name__ == '__main__':
-    print('Welcome to my CLI!')
-    function_1()
-    x = 0
-    while not x:
-        x = function_2(x)
-    if x < 0:
-        y = function_3(x)
-    else:
-        y = function_4(x)
-    z = function_5(y)
-    z = function_6(z)
-    z = function_7(z)
-    z = function_8(z)
-    function_9(z)
-    function_10(x, y, z)
-    print('Thanks for using my CLI')
-
-```
-
-***
-
-## Updating Your README.md
-
-`README.md` is a Markdown file that describes your project. These files can be
-used in many different ways- you may have noticed that we use them to generate
-entire Canvas lessons- but they're most commonly used as homepages for online
-Git repositories. **When you develop something that you want other people to
-use, you need to have a README.**
-
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this lesson's resources for a basic guide to Markdown.
-
-### What Goes into a README?
-
-This README should serve as a template for your own- go through the important
-files in your project and describe what they do. Each file that you edit
-(you can ignore your Alembic files) should get at least a paragraph. Each
-function should get a small blurb.
-
-You should descibe your actual CLI script first, and with a good level of
-detail. The rest should be ordered by importance to the user. (Probably
-functions next, then models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
-***
-
-## Conclusion
-
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you
-off to a good start with your Phase 3 Project.
-
-Happy coding!
-
-***
-
-## Resources
-
-- [Setting up a respository - Atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
-- [Create a repo- GitHub Docs](https://docs.github.com/en/get-started/quickstart/create-a-repo)
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
