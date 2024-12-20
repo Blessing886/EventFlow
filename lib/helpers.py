@@ -31,20 +31,20 @@ def find_event_by_id():
 
 def create_event():
     try:
-        name = input("Enter the event name: ").strip()
+        name = input("Enter the event name: ")
         while not name:
             print("Event name cannot be empty.")
-            name = input("Enter the event name: ").strip()
+            name = input("Enter the event name: ")
 
-        date = input("Enter the event date (YYYY-MM-DD): ").strip()
+        date = input("Enter the event date (YYYY-MM-DD): ")
         while not date:
             print("Event date cannot be empty.")
-            date = input("Enter the event date (YYYY-MM-DD): ").strip()
+            date = input("Enter the event date (YYYY-MM-DD): ")
 
-        location = input("Enter event location: ").strip()
+        location = input("Enter event location: ")
         while not location:
             print("Event location cannot be empty.")
-            location = input("Enter event location: ").strip()
+            location = input("Enter event location: ")
 
         event = Event(name=name, date=date, location=location)
         event.save()
