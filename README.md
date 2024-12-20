@@ -78,16 +78,56 @@ searching for events by date.
 11. Delete an attendee.
 
 #### Examples
+##### View all events
+- Select option 1 from the menu.
+- All events in the database will be displayed on the terminal.
+
+##### Find event by date
+- Select option 2 from the menu.
+- Input the date of the event you want to search for.
+- The event and its details will be displayed.
+
+##### Find event by ID
+- Select option 3 from the menu and input the event's ID to view the event's details.
+
 ##### Create an event
 - Select option 4 from the menu.
 - Enter the enter the event name, press enter, enter the event date, press enter then
 finally the event location.
 - The event will be saved in the database.
 
+##### Update event
+- Select option 5 from the menu.
+- Enter the details according to the prompts.
+- Changes will be displayed on the terminal.
+
+##### Delete Event
+- Select option 6 from the menu and enter the ID to the event you want to delete.
+- Message to confirm deletion will be displayed.
+
+##### Create an attendee
+- Select option 7 from the menu.
+- Enter the name and email of the attendee and the event ID of the event to be attended.
+- A message indicating successfull creation with the attendees details will be displayed.
+
+##### View all attendees
+- Select option 8 from the menu.
+- A list of all attendees in the database will be displayed.
+
 ##### Find attendees of an event
 - Select option 9 from the menu.
 - Enter the event ID.
 - A list from that event will be displayed.
+
+##### Update an attendee
+- Select option 10 from the menu.
+- Enter details according to prompt. If you want to leave either the email, name or ID
+the same as it was, leave blank.
+- New details of the attendee will be displayed on the terminal.
+
+###### Delete an attendee
+- Select option 11 from the menu and enter the ID of the attendee you want to delete.
+- The name of the attendee that has been deleted will be displayed.
 
 ** To exit the program enter 0**
 
